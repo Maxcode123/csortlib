@@ -8,16 +8,18 @@ void selection_sort(int *array, int length);
 
 void main() 
 {
-    int array[5] = {-1 -100, 2, 103, 5};
+    int array[] = {-1 -100, 2, 103, 5, -101, -102, 55, 19, 2, 1, 0, 5, 11, 9};
     int length = sizeof(array) / sizeof(int);
 
     printf("Unsorted array: ");
     show(&array[0], length);
+    printf("SORTING TRACE\n==============================================\n");
 
     selection_sort(&array[0], length);
 
     if (is_sorted(&array[0], length))
     {
+        printf("==============================================\n");
         printf("Sorted array: ");
         show(&array[0], length);
     }
@@ -27,6 +29,9 @@ void selection_sort(int *array, int length)
 {
     for (int i=0; i<length; i++)
     {
+        printf("%d  ", i);
+        show(&array[0], length);
+        
         int min = i;
         for (int j=i+1; j<length; j++)
         {
