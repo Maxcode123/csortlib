@@ -1,9 +1,7 @@
 #include <stdio.h>
 
-int less(int first_value, int second_value);
-void exchange(int *array, int first_index, int second_index);
-void show(int *array, int length);
-int is_sorted(int *array, int length);
+#include "sorthelpers.h"
+
 void selection_sort(int *array, int length);
 
 void main() 
@@ -12,16 +10,16 @@ void main()
     int length = sizeof(array) / sizeof(int);
 
     printf("Unsorted array: ");
-    show(&array[0], length);
+    sorthelpers_show(&array[0], length);
     printf("SORTING TRACE\n==============================================\n");
 
     selection_sort(&array[0], length);
 
-    if (is_sorted(&array[0], length))
+    if (sorthelpers_is_sorted(&array[0], length))
     {
         printf("==============================================\n");
         printf("Sorted array: ");
-        show(&array[0], length);
+        sorthelpers_show(&array[0], length);
     }
 }
 
@@ -30,51 +28,16 @@ void selection_sort(int *array, int length)
     for (int i=0; i<length; i++)
     {
         printf("%d  ", i);
-        show(&array[0], length);
+        sorthelpers_show(&array[0], length);
         
         int min = i;
         for (int j=i+1; j<length; j++)
         {
-            if (less(array[j], array[min]))
+            if (sorthelpers_less(array[j], array[min]))
             {
                 min = j;
             }
         }
-        exchange(&array[0], i, min);
+        sorthelpers_exchange(&array[0], i, min);
     }
-}
-
-int less(int first_value, int second_value)
-{
-    return first_value < second_value;
-}
-
-void exchange(int *array, int first_index, int second_index)
-{
-    int temp = array[first_index];
-    array[first_index] = array[second_index];
-    array[second_index] = temp;
-    return;
-}
-
-void show(int *array, int length)
-{
-    for (int i=0; i<length; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-    return;
-}
-
-int is_sorted(int *array, int length)
-{
-    for (int i=1; i<length; i++)
-    {
-        if (less(array[i], array[i-1]))
-        {
-            return 0;
-        }
-    }
-    return 1;
 }
