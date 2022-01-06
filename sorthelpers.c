@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "sorthelpers.h"
 
@@ -70,4 +71,15 @@ void sorthelpers_merge(int *array, int *aux, int lo, int mid, int hi)
 int sorthelpers_min(int first_value, int second_value)
 {
     return second_value ^ ((first_value ^ second_value) & -(first_value < second_value));
+}
+
+void sorthelpers_shuffle(int *array, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        int j = rand() % length;
+        int t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+    }
 }
