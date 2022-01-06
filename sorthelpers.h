@@ -43,4 +43,11 @@ int sorthelpers_min(int first_value, int second_value);
  */
 void sorthelpers_shuffle(int *array, int length);
 
+
+/**
+ * Partitions the array into array[lo..j-1], array[j], array[j+1..hi] and returns j.
+ * 
+ */
+int sorthelpers_partition(int *array, int lo, int hi);
+
 #endif

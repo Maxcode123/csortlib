@@ -83,3 +83,34 @@ void sorthelpers_shuffle(int *array, int length)
         array[j] = t;
     }
 }
+
+int sorthelpers_partition(int *array, int lo, int hi)
+{
+    int i = lo;
+    int j = hi + 1;
+    int v = array[lo];
+    while (1)
+    {
+        while (sorthelpers_less(array[++i], v))
+        {
+            if (i == hi)
+            {
+                break;
+            }
+        }
+        while (sorthelpers_less(v, array[--j]))
+        {
+            if (j == lo)
+            {
+                break;
+            }
+        }
+        if (i >= j)
+        {
+            break;
+        }
+        sorthelpers_exchange(&array[0], i, j);
+    }
+    sorthelpers_exchange(&array[0], lo, j);
+    return j;
+}
