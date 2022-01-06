@@ -37,4 +37,10 @@ void sorthelpers_merge(int *array, int *aux, int lo, int mid, int hi);
  */
 int sorthelpers_min(int first_value, int second_value);
 
+/**
+ * Shuffles the given array.
+ * 
+ */
+void sorthelpers_shuffle(int *array, int length);
+
 #endif
